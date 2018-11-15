@@ -1,8 +1,7 @@
 FROM maven
 WORKDIR /opt
-RUN git clone https://github.com/ajanata/PretendYoureXyzzy.git
-WORKDIR PretendYoureXyzzy
-RUN cp build.properties.example build.properties
-RUN mvn clean package war:exploded
-EXPOSE 8080
-CMD mvn jetty:run
+RUN git clone https://github.com/devgianlu/PYX-Reloaded.git
+WORKDIR PYX-Reloaded
+RUN mvn clean package
+RUN mv preferences.json.default preferences.json
+CMD java -jar /opt/PYX-Reloaded/target/PYX-Reloaded-jar-with-dependencies.jar
